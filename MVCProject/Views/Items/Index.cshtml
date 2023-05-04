@@ -1,0 +1,41 @@
+﻿@using MVCProject.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Item>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Item ID</th>
+        <th>Item Name</th>
+        <th>Item Brand</th>
+        <th>Item Catgory</th>
+        <th>Item Price</th>
+        <th>Item Stock</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.ItemID</th>
+                <td>@item.ItemName</td>
+                <td>@item.Brand</td>
+                <td>@item.Category.CategoryName</td>
+                <td>@item.ItemCost</td>
+                <td>@item.Stock</td>
+                @*<td><a href="/Items/Delete/@item.ItemID" class="btn btn-danger">Delete</a></td>*@
+                <td>@Html.ActionLink("Delete", "Delete", new { id = item.ItemID }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure? You can loose your data..!')" })</td>
+                <td><a href="/Items/Update/@item.ItemID" class="btn btn-success">Update</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+<a href="/Items/AddItem" class="btn btn-primary">Add New Item</a>
+

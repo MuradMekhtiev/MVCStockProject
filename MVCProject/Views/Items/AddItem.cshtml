@@ -1,0 +1,37 @@
+﻿@model MVCProject.Models.Entity.Item
+@{
+    ViewBag.Title = "AddItem";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+    <div>
+        <label>Item Name</label>
+        @Html.TextBoxFor(m => m.ItemName, new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(m => m.ItemName, "", new { @style = "color:red" })*@
+    </div>
+    <div style="margin-top:15px">
+        <label>Item Brand</label>
+        @Html.TextBoxFor(m => m.Brand, new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(m => m.Brand, "", new { @style = "color:red" })*@
+    </div>
+    <div style="margin-top:15px">
+        <label>Item Category</label>
+        @Html.DropDownListFor(m => m.Category.CategoryID, (List<SelectListItem>)ViewBag.vls, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Item Price</label>
+        @Html.TextBoxFor(m => m.ItemCost, new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(m => m.ItemCost, "", new { @style = "color:red" })*@
+    </div>
+    <div style="margin-top:15px">
+        <label>Item Stock</label>
+        @Html.TextBoxFor(m => m.Stock, new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(m => m.Stock, "", new { @style = "color:red" })*@
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info" id="btn1">Add</button>
+    </div>
+
+</form>
+

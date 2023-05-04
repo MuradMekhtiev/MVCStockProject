@@ -1,0 +1,21 @@
+﻿@model MVCProject.Models.Entity.Category
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("UpdateData", "Categories", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.CategoryID)
+        @Html.TextBoxFor(m => m.CategoryID, new { @class = "form-control" })
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.CategoryName)
+        @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control" })
+    </div>
+    <div>
+        <button class="btn btn-warning">Update</button>
+    </div>
+}
